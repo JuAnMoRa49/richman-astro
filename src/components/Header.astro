@@ -1,0 +1,49 @@
+---
+import "../styles/global.css";
+const NAV_LINKS = [
+  { name: "Inicio", href: "/", key: "home" },
+  { name: "Nosotros", href: "/nosotros", key: "about" },
+  { name: "Catalogo", href: "/catalogo", key: "catalog" },
+  { name: "Blog", href: "/blog", key: "blog" },
+];
+import { ArrowRightIcon } from "@lucide/astro";
+---
+
+<header class="bg-white text-primary font-semibold">
+  <div class="general-padding flex justify-between items-center h-16">
+    <div class="flex items-center gap-4 flex-1">
+      <img src="/logo.svg" alt="Richman Componentes Logo" class="size-8" />
+      <p class="uppercase text-xl font-bold">
+        Richman
+        <span class="hidden md:inline-block"> Componentes</span>
+      </p>
+    </div>
+
+    <nav class="flex-1">
+      <ul class="flex justify-center space-x-4">
+        {
+          NAV_LINKS.map((link) => (
+            <li key={link.key}>
+              <a
+                href={link.href}
+                class="relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex-1 flex justify-end">
+      <button
+        class="flex self-end items-center text-white bg-primary rounded-md px-3 py-1.5"
+        id="contact-button"
+      >
+        <p>Contacto</p>
+        <ArrowRightIcon class="inline-block w-4 h-4 ml-1" />
+      </button>
+    </div>
+  </div>
+</header>

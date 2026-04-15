@@ -1,0 +1,93 @@
+@import "tailwindcss";
+@import "tailwind-animations";
+
+@theme {
+  --color-primary: rgba(0, 50, 87, 1);
+  --color-primary-vibrant: rgba(0, 74, 124, 1);
+  --color-primary-muted: rgba(0, 31, 58, 0.8);
+
+  --color-beige: rgba(240, 229, 216, 1);
+  --color-beige-vibrant: rgba(255, 250, 240, 1);
+  --color-beige-muted: rgba(220, 208, 192, 1);
+
+  --color-chocolate: rgba(28, 16, 8, 1);
+  --color-chocolate-vibrant: rgba(74, 55, 40, 1);
+  --color-chocolate-muted: rgba(15, 8, 4, 1);
+
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+
+  --spacing-xsmall: 1rem;
+  --spacing-small: 2rem;
+  --spacing-medium: 4rem;
+  --spacing-large: 8rem;
+  --spacing-xlarge: 16rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--color-beige);
+    color: var(--color-chocolate);
+  }
+}
+
+.general-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.general-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+.item-full-width {
+  grid-column: span 8;
+}
+
+@media (min-width: 768px) {
+  .general-padding {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .general-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  .item-full-width {
+    grid-column: span 8;
+  }
+}
+
+@media (min-width: 1024px) {
+  .general-padding {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  .general-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .item-full-width {
+    grid-column: span 12;
+  }
+}
+
+@media (min-width: 1440px) {
+  .general-padding {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+.font-serif {
+  font-family: "Playfair Display", serif;
+}

@@ -1,0 +1,22 @@
+---
+const { image, video } = Astro.props;
+---
+
+<section class="relative py-16">
+  {
+    video ? (
+      <video
+        class="absolute inset-0 w-full h-full object-cover"
+        src={video}
+        autoplay
+        muted
+        loop
+        playsinline
+      />
+    ) : image ? (
+      <img src={image} alt="Hero Image" />
+    ) : (
+      <div>Hola</div>
+    )
+  }
+</section>

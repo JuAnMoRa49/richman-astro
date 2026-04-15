@@ -16,12 +16,6 @@
 
   --color-white: rgba(255, 255, 255, 1);
   --color-black: rgba(0, 0, 0, 1);
-
-  --spacing-xsmall: 1rem;
-  --spacing-small: 2rem;
-  --spacing-medium: 4rem;
-  --spacing-large: 8rem;
-  --spacing-xlarge: 16rem;
 }
 
 @layer base {

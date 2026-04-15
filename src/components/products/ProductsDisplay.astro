@@ -1,37 +1,37 @@
 ---
-const { title, description, theme, restrictions, limit } = Astro.props;
+const { title, description, theme, restrict, limit = 4 } = Astro.props;
 import { getCollection } from "astro:content";
-const allProducts = await getCollection("catalog");
 import ProductCard from "./ProductCard.astro";
 
-// Filtrar productos según restrictions
-const filteredProducts = restrictions
-  ? allProducts.filter(restrictions)
+const allProducts = await getCollection("catalog");
+
+// Filtrar según restrict
+const products = restrict
+  ? allProducts.filter((p) => p.data[restrict] === true)
   : allProducts;
-
-// Estado inicial para el límite de productos visibles
-let visibleLimit = limit || 4;
-
-function showMore() {
-  visibleLimit += limit || 4;
-}
 ---
 
 <section
-  class={`py-8 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`}
+  class={`py-8 ${theme === "dark" ? "bg-primary text-white" : "bg-white text-primary"}`}
 >
   <div class="general-padding">
     <div class="text-center mb-8">
-      <h2 class="text-3xl text-chocolate font-bold">{title}</h2>
-      <p class="text-primary font-serif">
+      <h2
+        class={`text-3xl font-bold ${theme === "dark" ? "text-white" : "text-primary"}`}
+      >
+        {title}
+      </h2>
+      <p
+        class={`font-serif ${theme === "dark" ? "text-white" : "text-primary"}`}
+      >
         {description}
       </p>
     </div>
+
     <ul class="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-4 gap-4">
       {
-        filteredProducts
-          .slice(0, visibleLimit)
-          .map((product) => (
+        products.map((product, index) => (
+          <li class="product-item" data-index={index}>
             <ProductCard
               href={`/catalogo/${product.id}`}
               title={product.data.title}
@@ -39,16 +39,19 @@ function showMore() {
               category={product.data.category}
               subcategory={product.data.subcategory}
               image={product.data.image}
+              theme={theme}
             />
-          ))
+          </li>
+        ))
       }
     </ul>
+
     {
-      visibleLimit < filteredProducts.length && (
+      products.length > limit && (
         <div class="text-center mt-4">
           <button
-            class="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark"
-            onClick={showMore}
+            id="show-more-button"
+            class={`px-4 py-2 rounded ${theme === "dark" ? "bg-white text-primary" : "bg-primary text-white"}`}
           >
             Mostrar más
           </button>
@@ -58,5 +61,20 @@ function showMore() {
   </div>
 </section>
 
-<script>
-  
+<script define:vars={{ limit }}>
+  const items = document.querySelectorAll(".product-item");
+  const btn = document.getElementById("show-more-button");
+  let visible = limit;
+
+  items.forEach((item, i) => {
+    if (i >= limit) item.style.display = "none";
+  });
+
+  btn?.addEventListener("click", () => {
+    visible += limit;
+    items.forEach((item, i) => {
+      if (i < visible) item.style.display = "";
+    });
+    if (visible >= items.length) btn.style.display = "none";
+  });
+</script>

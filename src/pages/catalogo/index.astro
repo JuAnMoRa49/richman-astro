@@ -20,8 +20,7 @@ const products = await getCollection("catalog");
   <ProductsDisplay
     title="Nuestros Productos"
     description="Nuestras soluciones con mayor demanda, certificadas bajo los más estrictos estándares de calidad industrial."
-    theme="dark"
-    restictions={(product) => product.data.highlight}
-    limit={2} 
+    theme="light"
+    limit={4}
   />
 </GeneralLayout>

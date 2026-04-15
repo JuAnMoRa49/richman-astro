@@ -1,0 +1,62 @@
+---
+const { title, description, theme, restrictions, limit } = Astro.props;
+import { getCollection } from "astro:content";
+const allProducts = await getCollection("catalog");
+import ProductCard from "./ProductCard.astro";
+
+// Filtrar productos según restrictions
+const filteredProducts = restrictions
+  ? allProducts.filter(restrictions)
+  : allProducts;
+
+// Estado inicial para el límite de productos visibles
+let visibleLimit = limit || 4;
+
+function showMore() {
+  visibleLimit += limit || 4;
+}
+---
+
+<section
+  class={`py-8 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`}
+>
+  <div class="general-padding">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl text-chocolate font-bold">{title}</h2>
+      <p class="text-primary font-serif">
+        {description}
+      </p>
+    </div>
+    <ul class="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {
+        filteredProducts
+          .slice(0, visibleLimit)
+          .map((product) => (
+            <ProductCard
+              href={`/catalogo/${product.id}`}
+              title={product.data.title}
+              description={product.data.description}
+              category={product.data.category}
+              subcategory={product.data.subcategory}
+              image={product.data.image}
+            />
+          ))
+      }
+    </ul>
+    {
+      visibleLimit < filteredProducts.length && (
+        <div class="text-center mt-4">
+          <button
+            class="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark"
+            onClick={showMore}
+          >
+            Mostrar más
+          </button>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<script>
+  

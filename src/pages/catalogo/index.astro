@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import GeneralLayout from "../../layouts/GeneralLayout.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import ProductCard from "../../components/products/ProductCard.astro";
+import ProductsDisplay from "../../components/products/ProductsDisplay.astro";
+
+const products = await getCollection("catalog");
+---
+
+<GeneralLayout>
+  <HeroSection
+    title="Somos parte de la cadena de suministro global"
+    description="Participamos en diferentes eventos y ferias comerciales alrededor del mundo para conectar con clientes y socios potenciales."
+    video="/src/assets/catalog-hero.mp4"
+    ctaText="Conoce nuestros eventos"
+    ctaLink="#eventos"
+  />
+  <ProductsDisplay
+    title="Nuestros Productos"
+    description="Nuestras soluciones con mayor demanda, certificadas bajo los más estrictos estándares de calidad industrial."
+    theme="dark"
+    restictions={(product) => product.data.highlight}
+    limit={2} 
+  />
+</GeneralLayout>

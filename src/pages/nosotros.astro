@@ -1,0 +1,17 @@
+---
+import GeneralLayout from "@layouts/GeneralLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
+---
+
+<GeneralLayout title="Richman Componentes" description="Descripción específica">
+  <!-- slot name="head" para agregar algo extra al head solo en esta página -->
+  <link slot="head" rel="stylesheet" />
+
+  <HeroSection
+    title="Liderando la manufactura de precisión con propósito"
+    description="Más que proveedores, somos aliados estratégicos en la cadena de suministro de la industria global."
+    video="/src/assets/us-hero.mp4"
+    ctaText="Conoce nuestras sucursales"
+    ctaLink="#sucursales"
+  />
+</GeneralLayout>

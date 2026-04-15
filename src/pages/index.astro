@@ -1,10 +1,17 @@
 ---
 import GeneralLayout from "@layouts/GeneralLayout.astro";
+import HeroSection from "../components/HeroSection.astro";
 ---
 
-<GeneralLayout title="Mi página" description="Descripción específica">
+<GeneralLayout>
   <!-- slot name="head" para agregar algo extra al head solo en esta página -->
-  <link slot="head" rel="stylesheet" href="/estilos-especiales.css" />
+  <link slot="head" rel="stylesheet" />
 
-  <h1>Contenido</h1>
+  <HeroSection
+    title="Comprometidos con la calidad de nuestros productos"
+    description="Producimos componentes especializados para diferentes sectores"
+    video="/src/assets/home-hero.mp4"
+    ctaText="Explora nuestros productos"
+    ctaLink="/productos"
+  />
 </GeneralLayout>

@@ -3,14 +3,14 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
   image?: string; // para open graph
 }
 
 const {
-  title,
-  description = "Descripción por defecto de tu sitio",
+  title = "Richman Componentes | Componentes especializados para diferentes sectores",
+  description = "Componentes para diferentes sectores: automotriz, industrial, construcción y más. Calidad, innovación y servicio personalizado en cada producto.",
   image = "/og-image.png",
 } = Astro.props;
 

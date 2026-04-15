@@ -8,8 +8,8 @@ export const SITE_DESCRIPTION =
 
 export const NAV_LINKS = [
   { name: "Inicio", href: "/", key: "home" },
-  { name: "Nosotros", href: "/nosotros", key: "about" },
   { name: "Catalogo", href: "/catalogo", key: "catalog" },
+  { name: "Nosotros", href: "/nosotros", key: "about" },
   { name: "Blog", href: "/blog", key: "blog" },
 ];
 

@@ -1,22 +1,29 @@
 ---
-const { title, description, limit = 6 } = Astro.props;
-
+const {
+  title,
+  description,
+  restrict,
+  limit = 4,
+  superlimit = false,
+} = Astro.props;
 import { getCollection } from "astro:content";
 import BlogCard from "./BlogCard.astro";
 
 const allPosts = await getCollection("blog");
 
-// puedes limitar desde aquí o dejar que el JS lo haga
-const posts = allPosts;
+// Filtrar según restrict
+const posts = restrict
+  ? allPosts.filter((p) => p.data[restrict] === true)
+  : allPosts;
 ---
 
 <section class="py-8 bg-white text-primary">
   <div class="general-padding">
     <div class="text-center mb-8">
-      <h2 class="text-3xl font-bold">
+      <h2 class="text-3xl font-bold text-primary">
         {title}
       </h2>
-      <p class="font-serif">
+      <p class="font-serif text-primary">
         {description}
       </p>
     </div>
@@ -29,7 +36,7 @@ const posts = allPosts;
               href={`/blog/${post.id}`}
               title={post.data.title}
               description={post.data.description}
-              image={post.data.heroImage}
+              image={post.data.image}
             />
           </li>
         ))
@@ -37,11 +44,11 @@ const posts = allPosts;
     </ul>
 
     {
-      posts.length > limit && (
+      !superlimit && posts.length > limit && (
         <div class="text-center mt-4">
           <button
             id="show-more-button"
-            class="px-4 py-2 rounded bg-white text-primary"
+            class="px-4 py-2 rounded bg-primary text-white"
           >
             Mostrar más
           </button>
@@ -54,7 +61,6 @@ const posts = allPosts;
 <script define:vars={{ limit }}>
   const items = document.querySelectorAll(".post-item");
   const btn = document.getElementById("show-more-button");
-
   let visible = limit;
 
   items.forEach((item, i) => {
@@ -63,13 +69,9 @@ const posts = allPosts;
 
   btn?.addEventListener("click", () => {
     visible += limit;
-
     items.forEach((item, i) => {
       if (i < visible) item.style.display = "";
     });
-
-    if (visible >= items.length) {
-      btn.style.display = "none";
-    }
+    if (visible >= items.length) btn.style.display = "none";
   });
 </script>

@@ -1,14 +1,7 @@
 ---
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
 import GeneralLayout from "../../layouts/GeneralLayout.astro";
 import HeroSection from "../../components/HeroSection.astro";
 import BlogDisplay from "../../components/blog/BlogDisplay.astro";
-
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
 ---
 
 <GeneralLayout>
@@ -20,9 +13,11 @@ const posts = (await getCollection("blog")).sort(
     ctaLink="#eventos"
   />
   <BlogDisplay
-    title="Nuestros artículos"
-    description="Descubre las últimas noticias y actualizaciones en nuestro blog."
-    :posts="posts"
+    id="eventos"
+    title="Nuestros Eventos"
+    description="Participamos en diferentes eventos y ferias comerciales alrededor del mundo para conectar con clientes y socios potenciales."
+    theme="light"
+    limit={4}
   />
   <section class="bg-primary text-white py-8">
     <div class="general-padding">

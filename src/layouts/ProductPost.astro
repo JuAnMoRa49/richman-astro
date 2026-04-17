@@ -1,0 +1,104 @@
+---
+import GeneralLayout from "./GeneralLayout.astro";
+const {
+  title,
+  description,
+  category,
+  image,
+  type,
+  grade,
+  material,
+  finished,
+  diameter,
+  length,
+  extra,
+} = Astro.props;
+import { Image } from "astro:assets";
+import ProductsDisplay from "../components/products/ProductsDisplay.astro";
+---
+
+<GeneralLayout title={title} description={description} image={image}>
+  <div class="general-padding pt-24 pb-12 flex flex-col md:flex-row">
+    <div>
+      <Image src={image} alt={title} class="w-full" />
+      {
+        extra && (
+          <div class="hidden md:block lg:hidden mt-6">
+            <p class="font-bold">Detalles adicionales:</p>
+            <p class="text-lg mt-2">{extra}</p>
+          </div>
+        )
+      }
+    </div>
+    <div class="mt-8 md:ml-8 flex flex-col">
+      <p class="uppercase text-primary/40 font-bold text-xs">{category}</p>
+      <h1 class="text-3xl text-primary font-bold mb-4">{title}</h1>
+      <p class="font-bold">Descripcion detallada:</p>
+      <p class="text-lg">{description}</p>
+
+      <div class="mt-8">
+        {
+          type && (
+            <p>
+              <span class="font-bold">Tipo:</span> {type}
+            </p>
+          )
+        }
+        {
+          grade && (
+            <p>
+              <span class="font-bold">Grado:</span> {grade}
+            </p>
+          )
+        }
+        {
+          material && (
+            <p>
+              <span class="font-bold">Material:</span> {material}
+            </p>
+          )
+        }
+        {
+          finished && (
+            <p>
+              <span class="font-bold">Acabado:</span> {finished}
+            </p>
+          )
+        }
+        {
+          diameter && (
+            <p>
+              <span class="font-bold">Diámetro:</span> {diameter}
+            </p>
+          )
+        }
+        {
+          length && (
+            <p>
+              <span class="font-bold">Longitud:</span> {length}
+            </p>
+          )
+        }
+      </div>
+      {
+        extra && (
+          <div class="mt-6 md:hidden lg:block">
+            <p class="font-bold">Detalles adicionales:</p>
+            <p class="text-lg mt-2">{extra}</p>
+          </div>
+        )
+      }
+    </div>
+  </div>
+  <ProductsDisplay
+    title="Productos relacionados"
+    description="Estos productos pueden ser de tu interés"
+    superlimit={true}
+    theme="dark"
+    limit={3}
+    <
+    GeneralLayout
+  >
+    />
+  </ProductsDisplay></GeneralLayout
+>

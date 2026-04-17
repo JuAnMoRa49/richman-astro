@@ -12,7 +12,7 @@ const blog = defineCollection({
       description: z.string(),
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
-      heroImage: z.optional(image()),
+      image: z.optional(image()),
     }),
 });
 
@@ -24,11 +24,18 @@ const catalog = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
+      category: z.string().optional(),
+      image: z.optional(image()),
+      type: z.string().optional(),
+      grade: z.string().optional(),
+      material: z.string().optional(),
+      finished: z.string().optional(),
+      diameter: z.string().optional(),
+      length: z.string().optional(),
+      extra: z.string().optional(),
       highlight: z.boolean().default(false),
       product: z.boolean().default(false),
       service: z.boolean().default(false),
-      category: z.string().optional(),
-      image: z.optional(image()),
     }),
 });
 

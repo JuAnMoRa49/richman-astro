@@ -1,5 +1,12 @@
 ---
-const { title, description, theme, restrict, limit = 4 } = Astro.props;
+const {
+  title,
+  description,
+  theme,
+  restrict,
+  limit = 4,
+  superlimit = false,
+} = Astro.props;
 import { getCollection } from "astro:content";
 import ProductCard from "./ProductCard.astro";
 
@@ -46,7 +53,7 @@ const products = restrict
     </ul>
 
     {
-      products.length > limit && (
+      !superlimit && products.length > limit && (
         <div class="text-center mt-4">
           <button
             id="show-more-button"

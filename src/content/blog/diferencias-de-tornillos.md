@@ -2,7 +2,7 @@
 title: "Diferencias entre tornillos de alta resistencia y estándar"
 description: "Aprende cuándo usar cada tipo de tornillo."
 pubDate: 2026-01-12
-heroImage: "../../assets/blog/diferencias-de-tornillos.webp"
+image: "../../assets/blog/diferencias-de-tornillos.webp"
 ---
 
 Los tornillos de alta resistencia están diseñados para soportar cargas mayores y condiciones más exigentes que los tornillos estándar. A continuación, se detallan las principales diferencias entre ambos tipos de tornillos:

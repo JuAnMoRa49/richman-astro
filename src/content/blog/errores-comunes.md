@@ -2,7 +2,7 @@
 title: "Errores comunes al seleccionar tuercas"
 description: "Evita fallos en producción."
 pubDate: 2026-01-22
-heroImage: "../../assets/blog/errores-comunes.webp"
+image: "../../assets/blog/errores-comunes.webp"
 ---
 
 Seleccionar una tuerca incorrecta puede llevar a fallos en la producción y problemas de seguridad. Algunos errores comunes incluyen:

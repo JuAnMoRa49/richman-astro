@@ -2,7 +2,7 @@
 title: "Materiales más usados en tornillería automotriz"
 description: "Acero, acero inoxidable y más."
 pubDate: 2026-01-20
-heroImage: "../../assets/blog/materiales-mas-usados.webp"
+image: "../../assets/blog/materiales-mas-usados.webp"
 ---
 
 Los materiales determinan la resistencia y durabilidad de los tornillos en la industria automotriz. Los materiales más comunes incluyen:

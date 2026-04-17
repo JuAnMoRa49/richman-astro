@@ -2,7 +2,7 @@
 title: "Tornillo ejemplo 5"
 description: "Este es un ejemplo de un tornillo para mostrar cómo se pueden agregar productos al catálogo."
 service: true
-category: "product"
+category: "Tornillos especiales"
 image: "../../assets/catalog/tornillo-ejemplo-2.webp"
 ---
 

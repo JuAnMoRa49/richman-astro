@@ -2,10 +2,10 @@
 const { speed = 30, pauseOnHover = true, title } = Astro.props;
 ---
 
-<div class="overflow-hidden w-full group bg-white" data-pause={pauseOnHover}>
+<div class="overflow-hidden w-full group bg-gray-100" data-pause={pauseOnHover}>
   <div class="general-padding">
     <h2
-      class="text-2xl md:text-3xl text-center mt-8 mb-4 font-semibold text-primary"
+      class="text-2xl md:text-3xl text-center my-8 font-semibold text-primary"
     >
       {title}
     </h2>
@@ -15,13 +15,13 @@ const { speed = 30, pauseOnHover = true, title } = Astro.props;
     <div class="flex gap-12 py-4">
       <slot />
     </div>
-    <div class="hiiden md:flex gap-12 py-4">
+    <div class="hiiden md:flex gap-12 py-4 ml-12">
       <slot />
     </div>
-    <div class="hidden lg:flex gap-12 py-4">
+    <div class="hidden lg:flex gap-12 py-4 ml-12">
       <slot />
     </div>
-    <div class="hidden xl:flex gap-12 py-4">
+    <div class="hidden xl:flex gap-12 py-4 ml-12">
       <slot />
     </div>
   </div>

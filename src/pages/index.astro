@@ -5,6 +5,48 @@ import HeroSection from "../components/HeroSection.astro";
 import ProductsDisplay from "../components/products/ProductsDisplay.astro";
 import TextWithIcons from "../components/TextWithIcons.astro";
 import Slider from "../components/Slider.astro";
+
+import StackedCards from "../components/StackedCards.astro";
+import BlogDisplay from "../components/blog/BlogDisplay.astro";
+
+const valores = [
+  {
+    title: "Socio Estratégico",
+    description:
+      "No somos solo un proveedor; nos convertimos en el aliado que impulsa el liderazgo de tu marca en el mercado.",
+    badge: "Nuestro Compromiso",
+  },
+  {
+    title: "Cero Defectos",
+    description:
+      "Enfocados en la prevención de no conformidades para garantizar que cada pieza cumpla tus especificaciones técnicas.",
+    badge: "Calidad Total",
+  },
+  {
+    title: "Versatilidad de Sectores",
+    description:
+      "Soluciones probadas para las industrias más exigentes: Automotriz, Minera, Petrolera y Agrícola.",
+    badge: "Experiencia Comprobada",
+  },
+  {
+    title: "Innovación Continua",
+    description:
+      "Aprovechamos las nuevas tecnologías para superar constantemente las expectativas de rendimiento y costo.",
+    badge: "Vanguardia Tecnológica",
+  },
+  {
+    title: "Sostenibilidad y Ética",
+    description:
+      "Compromiso real con la protección del medio ambiente y la integridad de nuestro equipo humano.",
+    badge: "Responsabilidad Social",
+  },
+  {
+    title: "Satisfacción Garantizada",
+    description:
+      "Nuestra política se centra en un servicio excepcional y el cumplimiento riguroso de cada uno de tus requerimientos.",
+    badge: "Compromiso Total",
+  },
+];
 ---
 
 <GeneralLayout>
@@ -25,16 +67,9 @@ import Slider from "../components/Slider.astro";
     rightIcon="/src/assets/icons/engranaje.svg"
     theme="light"
   />
-  <ProductsDisplay
-    title="Nuestros mejores productos"
-    description="Nuestras soluciones con mayor demanda, certificadas bajo los más estrictos estándares de calidad industrial."
-    restrict="highlight"
-    theme="dark"
-    limit={6}
-  />
 
   <Slider
-    speed={10}
+    speed={30}
     pauseOnHover={true}
     title="Empresas que confían en nuestra calidad
 "
@@ -44,9 +79,34 @@ import Slider from "../components/Slider.astro";
         <img
           src={client.logo}
           alt={client.name}
-          class="size-40 bg-white px-4 rounded"
+          class="size-40 bg-white border px-4 rounded"
         />
       ))
     }
   </Slider>
+
+  <StackedCards
+    title="Valores que impulsan la excelencia"
+    subtitle="Nuestra Filosofía"
+    cards={valores}
+  />
+  <ProductsDisplay
+    title="Nuestros mejores productos"
+    description="Nuestras soluciones con mayor demanda, certificadas bajo los más estrictos estándares de calidad industrial."
+    restrict="highlight"
+    theme="dark"
+    limit={6}
+  />
+
+  <BlogDisplay
+    title="Últimas noticias y consejos"
+    description="Mantente informado con nuestros artículos sobre tendencias, consejos de mantenimiento y casos de éxito en la industria."
+    limit={3}
+    superlimit={true}
+  />
+  <section class="bg-primary text-white py-8">
+    <div class="general-padding">
+      <h2 class="text-center text-5xl">Sé parte de nuestra historia</h2>
+    </div>
+  </section>
 </GeneralLayout>

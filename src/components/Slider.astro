@@ -1,0 +1,48 @@
+---
+const { speed = 30, pauseOnHover = true, title } = Astro.props;
+---
+
+<div class="overflow-hidden w-full group bg-white" data-pause={pauseOnHover}>
+  <div class="general-padding">
+    <h2
+      class="text-2xl md:text-3xl text-center mt-8 mb-4 font-semibold text-primary"
+    >
+      {title}
+    </h2>
+  </div>
+  <div class="flex w-max animate-marquee" style={`--duration:${speed}s`}>
+    <!-- contenido original -->
+    <div class="flex gap-12 py-4">
+      <slot />
+    </div>
+    <div class="hiiden md:flex gap-12 py-4">
+      <slot />
+    </div>
+    <div class="hidden lg:flex gap-12 py-4">
+      <slot />
+    </div>
+    <div class="hidden xl:flex gap-12 py-4">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .animate-marquee {
+    animation: marquee var(--duration) linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* pause con tailwind group */
+  [data-pause="true"]:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+</style>

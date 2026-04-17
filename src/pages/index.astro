@@ -1,6 +1,10 @@
 ---
 import GeneralLayout from "@layouts/GeneralLayout.astro";
+import { CLIENTS } from "../consts";
 import HeroSection from "../components/HeroSection.astro";
+import ProductsDisplay from "../components/products/ProductsDisplay.astro";
+import TextWithIcons from "../components/TextWithIcons.astro";
+import Slider from "../components/Slider.astro";
 ---
 
 <GeneralLayout>
@@ -14,4 +18,35 @@ import HeroSection from "../components/HeroSection.astro";
     ctaText="Explora nuestros productos"
     ctaLink="/productos"
   />
+  <TextWithIcons
+    title="Todos los componentes que necesitas en un solo lugar"
+    subtitle="Garantizamos la excelencia operativa y el cumplimiento riguroso de cada requerimiento industrial."
+    leftIcon="/src/assets/icons/tuerca.svg"
+    rightIcon="/src/assets/icons/engranaje.svg"
+    theme="light"
+  />
+  <ProductsDisplay
+    title="Nuestros mejores productos"
+    description="Nuestras soluciones con mayor demanda, certificadas bajo los más estrictos estándares de calidad industrial."
+    restrict="highlight"
+    theme="dark"
+    limit={6}
+  />
+
+  <Slider
+    speed={10}
+    pauseOnHover={true}
+    title="Empresas que confían en nuestra calidad
+"
+  >
+    {
+      CLIENTS.map((client) => (
+        <img
+          src={client.logo}
+          alt={client.name}
+          class="size-40 bg-white px-4 rounded"
+        />
+      ))
+    }
+  </Slider>
 </GeneralLayout>

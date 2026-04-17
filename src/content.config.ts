@@ -27,7 +27,7 @@ const catalog = defineCollection({
       highlight: z.boolean().default(false),
       product: z.boolean().default(false),
       service: z.boolean().default(false),
-      subcategory: z.string().optional(),
+      category: z.string().optional(),
       image: z.optional(image()),
     }),
 });

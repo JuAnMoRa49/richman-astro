@@ -18,9 +18,24 @@ const products = await getCollection("catalog");
     ctaLink="#eventos"
   />
   <ProductsDisplay
+    title="Productos Estrella"
+    description="Nuestro producto más destacado, con características excepcionales y una demanda creciente en el mercado."
+    restrict="highlight"
+    theme="dark"
+    limit={4}
+  />
+  <ProductsDisplay
+    title="Nuestros Servicios"
+    description="Además de nuestros productos, ofrecemos una gama de servicios complementarios para satisfacer las necesidades de nuestros clientes."
+    restrict="service"
+    theme="light"
+    limit={4}
+  />
+  <ProductsDisplay
     title="Nuestros Productos"
     description="Nuestras soluciones con mayor demanda, certificadas bajo los más estrictos estándares de calidad industrial."
-    theme="light"
+    restrict="product"
+    theme="dark"
     limit={4}
   />
 </GeneralLayout>

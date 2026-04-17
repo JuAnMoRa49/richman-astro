@@ -1,0 +1,75 @@
+---
+const { title, description, limit = 6 } = Astro.props;
+
+import { getCollection } from "astro:content";
+import BlogCard from "./BlogCard.astro";
+
+const allPosts = await getCollection("blog");
+
+// puedes limitar desde aquí o dejar que el JS lo haga
+const posts = allPosts;
+---
+
+<section class="py-8 bg-white text-primary">
+  <div class="general-padding">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold">
+        {title}
+      </h2>
+      <p class="font-serif">
+        {description}
+      </p>
+    </div>
+
+    <ul class="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        posts.map((post, index) => (
+          <li class="post-item" data-index={index}>
+            <BlogCard
+              href={`/blog/${post.id}`}
+              title={post.data.title}
+              description={post.data.description}
+              image={post.data.heroImage}
+            />
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      posts.length > limit && (
+        <div class="text-center mt-4">
+          <button
+            id="show-more-button"
+            class="px-4 py-2 rounded bg-white text-primary"
+          >
+            Mostrar más
+          </button>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<script define:vars={{ limit }}>
+  const items = document.querySelectorAll(".post-item");
+  const btn = document.getElementById("show-more-button");
+
+  let visible = limit;
+
+  items.forEach((item, i) => {
+    if (i >= limit) item.style.display = "none";
+  });
+
+  btn?.addEventListener("click", () => {
+    visible += limit;
+
+    items.forEach((item, i) => {
+      if (i < visible) item.style.display = "";
+    });
+
+    if (visible >= items.length) {
+      btn.style.display = "none";
+    }
+  });
+</script>

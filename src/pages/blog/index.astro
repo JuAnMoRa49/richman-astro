@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import GeneralLayout from "../../layouts/GeneralLayout.astro";
 import HeroSection from "../../components/HeroSection.astro";
+import BlogDisplay from "../../components/blog/BlogDisplay.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -18,28 +19,14 @@ const posts = (await getCollection("blog")).sort(
     ctaText="Conoce nuestros eventos"
     ctaLink="#eventos"
   />
-  <section>
-    <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <a href={`/blog/${post.id}/`}>
-              {post.data.heroImage && (
-                <Image
-                  width={720}
-                  height={360}
-                  src={post.data.heroImage}
-                  alt=""
-                />
-              )}
-              <h4 class="title">{post.data.title}</h4>
-              <p class="date">
-                <FormattedDate date={post.data.pubDate} />
-              </p>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+  <BlogDisplay
+    title="Nuestros artículos"
+    description="Descubre las últimas noticias y actualizaciones en nuestro blog."
+    :posts="posts"
+  />
+  <section class="bg-primary text-white py-8">
+    <div class="general-padding">
+      <h2 class="text-center text-5xl">Sé parte de nuestra historia</h2>
+    </div>
   </section>
 </GeneralLayout>

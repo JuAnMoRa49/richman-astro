@@ -27,3 +27,12 @@ export const COMPANY_INFO = {
   founded: 2009,
   slogan: "Tenemos cuerda para lo mas especial",
 };
+
+export const CLIENTS = [
+  { name: "John Deere", logo: "../src/assets/clients/jh.svg" },
+  { name: "Volkswagen", logo: "../src/assets/clients/vw.svg" },
+  { name: "Metso", logo: "../src/assets/clients/metso.svg" },
+  { name: "AGCO", logo: "../src/assets/clients/agco.svg" },
+  { name: "CNH", logo: "../src/assets/clients/cnh.svg" },
+  { name: "Inteva", logo: "../src/assets/clients/inteva.svg" },
+];

@@ -1,0 +1,66 @@
+---
+const { title, subtitle, leftIcon, rightIcon, theme = "light" } = Astro.props;
+---
+
+<section
+  class={`relative overflow-hidden ${
+    theme === "dark" ? "text-white bg-primary" : "text-primary bg-white"
+  }`}
+>
+  <div class="general-padding py-32 text-center relative z-10">
+    <h2
+      class="scroll-m-20 text-3xl md:text-4xl xl:text-5xl font-semibold tracking-tight"
+    >
+      {title}
+    </h2>
+    <p class="font-serif">{subtitle}</p>
+  </div>
+
+  {
+    leftIcon && (
+      <img
+        src={leftIcon}
+        alt="Left Icon"
+        class="icon-spin absolute -left-24 -bottom-24 lg:-bottom-24 opacity-10 w-72 h-72 pointer-events-none"
+      />
+    )
+  }
+
+  {
+    rightIcon && (
+      <img
+        src={rightIcon}
+        alt="Right Icon"
+        class="icon-spin-reverse absolute -right-24 -top-24 lg:-top-24 opacity-10 w-72 h-72 pointer-events-none"
+      />
+    )
+  }
+</section>
+
+<style>
+  .icon-spin {
+    animation: spinSlow 20s linear infinite;
+  }
+
+  .icon-spin-reverse {
+    animation: spinSlowReverse 25s linear infinite;
+  }
+
+  @keyframes spinSlow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spinSlowReverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+</style>

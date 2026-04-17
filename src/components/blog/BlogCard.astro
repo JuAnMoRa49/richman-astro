@@ -1,0 +1,30 @@
+---
+const { title, description, image, href } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<a
+  href={href}
+  class="group flex flex-row sm:flex-col border rounded-xl overflow-hidden border-gray-400/40 transition-all duration-300"
+>
+  <div class="flex md:flex-col bg-gray-400/20">
+    <div
+      class="relative w-32 shrink-0 sm:w-full sm:aspect-square overflow-hidden"
+    >
+      <Image
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+    </div>
+
+    <div class="flex flex-col justify-around py-4 p-2">
+      <h3 class="uppercase font-bold line-clamp-1 text-primary">
+        {title}
+      </h3>
+      <p class="card-description line-clamp-2 text-xs text-primary">
+        {description}
+      </p>
+    </div>
+  </div>
+</a>

@@ -1,8 +1,8 @@
 ---
-title: "Tornillo ejemplo 2"
+title: "Tornillo ejemplo 5"
 description: "Este es un ejemplo de un tornillo para mostrar cómo se pueden agregar productos al catálogo."
+service: true
 category: "product"
-subcategory: "Tornillos de acero inoxidable"
 image: "../../assets/catalog/tornillo-ejemplo-2.webp"
 ---
 

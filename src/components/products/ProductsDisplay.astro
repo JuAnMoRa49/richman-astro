@@ -12,13 +12,16 @@ import ProductCard from "./ProductCard.astro";
 
 const allProducts = await getCollection("catalog");
 
-// Filtrar según restrict
 const products = restrict
   ? allProducts.filter((p) => p.data[restrict] === true)
   : allProducts;
+
+// ID único por instancia
+const instanceId = `products-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
 <section
+  id={instanceId}
   class={`py-8 ${theme === "dark" ? "bg-primary text-white" : "bg-white text-primary"}`}
 >
   <div class="general-padding">
@@ -56,8 +59,7 @@ const products = restrict
       !superlimit && products.length > limit && (
         <div class="text-center mt-4">
           <button
-            id="show-more-button"
-            class={`px-4 py-2 rounded ${theme === "dark" ? "bg-white text-primary" : "bg-primary text-white"}`}
+            class={`show-more-btn px-4 py-2 rounded ${theme === "dark" ? "bg-white text-primary" : "bg-primary text-white"}`}
           >
             Mostrar más
           </button>
@@ -67,9 +69,11 @@ const products = restrict
   </div>
 </section>
 
-<script define:vars={{ limit }}>
-  const items = document.querySelectorAll(".product-item");
-  const btn = document.getElementById("show-more-button");
+<script define:vars={{ limit, instanceId }}>
+  // Scope todo al section de esta instancia
+  const section = document.getElementById(instanceId);
+  const items = section.querySelectorAll(".product-item");
+  const btn = section.querySelector(".show-more-btn");
   let visible = limit;
 
   items.forEach((item, i) => {

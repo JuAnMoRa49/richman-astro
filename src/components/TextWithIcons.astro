@@ -1,27 +1,37 @@
 ---
 const { title, subtitle, leftIcon, rightIcon, theme = "light" } = Astro.props;
+
+const isDark = theme === "dark";
+
+const iconClass = `absolute opacity-10 w-72 h-72 pointer-events-none ${
+  isDark ? "brightness-0 invert" : "brightness-0"
+}`;
 ---
 
 <section
-  class={`relative overflow-hidden ${
-    theme === "dark" ? "text-white bg-primary" : "text-primary bg-white"
-  }`}
+  class={`relative overflow-hidden ${isDark ? "text-white bg-primary" : "text-primary bg-white"}`}
 >
   <div class="general-padding py-32 text-center relative z-10">
     <h2
-      class="scroll-m-20 text-3xl md:text-4xl xl:text-5xl font-semibold xl:w-3/4 mx-auto mb-4"
+      class={`scroll-m-20 text-3xl md:text-4xl xl:text-5xl font-semibold xl:w-3/4 mx-auto mb-4 ${
+        isDark ? "text-white" : "text-primary"
+      }`}
     >
       {title}
     </h2>
-    <p class="text-lg text-chocolate w-1/2 mx-auto">{subtitle}</p>
+    <p
+      class={`text-lg w-1/2 mx-auto ${isDark ? "text-white/70" : "text-chocolate"}`}
+    >
+      {subtitle}
+    </p>
   </div>
 
   {
     leftIcon && (
       <img
         src={leftIcon}
-        alt="Left Icon"
-        class="icon-spin absolute -left-24 -bottom-24 lg:-bottom-24 opacity-10 w-72 h-72 pointer-events-none"
+        alt=""
+        class={`icon-spin -left-24 -bottom-24 lg:-bottom-24 ${iconClass}`}
       />
     )
   }
@@ -30,8 +40,8 @@ const { title, subtitle, leftIcon, rightIcon, theme = "light" } = Astro.props;
     rightIcon && (
       <img
         src={rightIcon}
-        alt="Right Icon"
-        class="icon-spin-reverse absolute -right-24 -top-24 lg:-top-24 opacity-10 w-72 h-72 pointer-events-none"
+        alt=""
+        class={`icon-spin-reverse -right-24 -top-24 lg:-top-24 ${iconClass}`}
       />
     )
   }

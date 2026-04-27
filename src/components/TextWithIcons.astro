@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const { title, subtitle, leftIcon, rightIcon, theme = "light" } = Astro.props;
 
 const isDark = theme === "dark";
@@ -28,8 +30,10 @@ const iconClass = `absolute opacity-10 w-72 h-72 pointer-events-none ${
 
   {
     leftIcon && (
-      <img
+      <Image
         src={leftIcon}
+        width={24}
+        height={24}
         alt=""
         class={`icon-spin -left-24 -bottom-24 lg:-bottom-24 ${iconClass}`}
       />
@@ -38,8 +42,10 @@ const iconClass = `absolute opacity-10 w-72 h-72 pointer-events-none ${
 
   {
     rightIcon && (
-      <img
+      <Image
         src={rightIcon}
+        width={24}
+        height={24}
         alt=""
         class={`icon-spin-reverse -right-24 -top-24 lg:-top-24 ${iconClass}`}
       />

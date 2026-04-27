@@ -6,12 +6,14 @@ interface Props {
   title?: string;
   description?: string;
   image?: string; // para open graph
+  bgColor?: string; // para fondo personalizado
 }
 
 const {
   title = "Richman Componentes | Componentes especializados para diferentes sectores",
   description = "Componentes para diferentes sectores: automotriz, industrial, construcción y más. Calidad, innovación y servicio personalizado en cada producto.",
   image = "/og-image.png",
+  bgColor = "bg-beige",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -40,7 +42,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Slot para head extra (scripts, estilos por página) -->
     <slot name="head" />
   </head>
-  <body>
+  <body class={bgColor}>
     <Header />
     <main>
       <slot />

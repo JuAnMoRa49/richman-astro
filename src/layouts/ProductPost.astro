@@ -15,11 +15,17 @@ const {
 } = Astro.props;
 import { Image } from "astro:assets";
 import ProductsDisplay from "../components/products/ProductsDisplay.astro";
+import TextWithIcons from "../components/TextWithIcons.astro";
 ---
 
-<GeneralLayout title={title} description={description} image={image}>
+<GeneralLayout
+  title={title}
+  description={description}
+  image={image}
+  bgColor="bg-primary"
+>
   <div class="general-padding pt-24 pb-12 flex flex-col md:flex-row">
-    <div>
+    <div class="bg-white">
       <Image src={image} alt={title} class="w-full" />
       {
         extra && (
@@ -30,9 +36,9 @@ import ProductsDisplay from "../components/products/ProductsDisplay.astro";
         )
       }
     </div>
-    <div class="mt-8 md:ml-8 flex flex-col">
-      <p class="uppercase text-primary/40 font-bold text-xs">{category}</p>
-      <h1 class="text-3xl text-primary font-bold mb-4">{title}</h1>
+    <div class="mt-8 md:ml-8 flex flex-col text-white">
+      <p class="uppercase text-white/40 font-bold text-xs">{category}</p>
+      <h1 class="text-3xl text-white font-bold mb-4">{title}</h1>
       <p class="font-bold">Descripcion detallada:</p>
       <p class="text-lg">{description}</p>
 
@@ -94,11 +100,14 @@ import ProductsDisplay from "../components/products/ProductsDisplay.astro";
     title="Productos relacionados"
     description="Estos productos pueden ser de tu interés"
     superlimit={true}
-    theme="dark"
+    theme="light"
     limit={3}
-    <
-    GeneralLayout
-  >
-    />
-  </ProductsDisplay></GeneralLayout
->
+  />
+  <TextWithIcons
+    title="Todos los componentes que necesitas en un solo lugar"
+    subtitle="Garantizamos la excelencia operativa y el cumplimiento riguroso de cada requerimiento industrial."
+    leftIcon="/src/assets/icons/tuerca.svg"
+    rightIcon="/src/assets/icons/engranaje.svg"
+    theme="dark"
+  />
+</GeneralLayout>

@@ -7,7 +7,7 @@ import { Image } from "astro:assets";
   {
     video ? (
       <video
-        class="absolute inset-0 w-full h-full object-cover"
+        class="absolute inset-0 w-full h-full object-cover z-0"
         src={video}
         autoplay
         muted
@@ -15,17 +15,25 @@ import { Image } from "astro:assets";
         playsinline
       />
     ) : image ? (
-      <Image src={image} alt={title} class="w-full" />
+      <Image
+        src={image}
+        alt={title}
+        class="absolute inset-0 w-full h-full object-cover z-0"
+      />
     ) : (
-      <div class="absolute inset-0 w-full h-full object-cover bg-linear-to-b from-white to-transparent" />
+      <div class="absolute inset-0 w-full h-full bg-linear-to-b from-white to-transparent z-0" />
     )
   }
+
+  <!-- Overlay encima del video -->
   <div
-    class="absolute inset-0 w-full h-full object-cover bg-linear-to-t from-white/20 to-white/40"
+    class="absolute inset-0 w-full h-full bg-linear-to-t from-white/20 to-white/40 z-10"
   >
   </div>
+
+  <!-- Contenido encima del overlay -->
   <div
-    class="general-padding relative z-10 text-center md:text-left text-white"
+    class="general-padding relative z-20 text-center md:text-left text-white"
   >
     <h1 class="text-4xl md:text-6xl xl:text-7xl font-bold mb-8 text-primary">
       {title}

@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Sidebar from "../components/Sidebar.astro";
 
 interface Props {
   title?: string;
@@ -44,6 +45,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body class={bgColor}>
     <Header />
+    <Sidebar />
     <main>
       <slot />
     </main>

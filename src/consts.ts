@@ -36,3 +36,24 @@ export const CLIENTS = [
   { name: "CNH", logo: "../src/assets/clients/cnh.svg" },
   { name: "Inteva", logo: "../src/assets/clients/inteva.svg" },
 ];
+
+export const SOCIAL_LINKS = [
+  {
+    key: "whatsapp",
+    name: "Whatsapp",
+    href: "https://wa.me/5215512345678",
+    icon: "/icons/whatsapp-icon.svg",
+  },
+  {
+    key: "facebook",
+    name: "Facebook",
+    href: "https://www.facebook.com/richmancomponentes",
+    icon: "/icons/facebook-icon.svg",
+  },
+  {
+    key: "instagram",
+    name: "Instagram",
+    href: "https://www.instagram.com/richmancomponentes",
+    icon: "/icons/instagram-icon.svg",
+  },
+];

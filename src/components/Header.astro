@@ -2,12 +2,20 @@
 import "../styles/global.css";
 import { NAV_LINKS } from "../consts.ts";
 import { ArrowRightIcon, Menu } from "@lucide/astro";
+import { Image } from "astro:assets";
 ---
 
 <header class="fixed z-99 left-0 right-0 bg-white text-primary font-semibold">
   <div class="general-padding flex justify-between items-center h-16">
     <a href="/" class="flex items-center gap-4 xl:flex-1">
-      <img src="/logo.svg" alt="Richman Componentes Logo" class="size-8" />
+      <Image
+        src="/logo.svg"
+        alt="Richman Componentes Logo"
+        class="size-8"
+        height={8}
+        width={8}
+        loading="lazy"
+      />
       <p class="uppercase text-xl font-bold">Richman Componentes</p>
     </a>
 

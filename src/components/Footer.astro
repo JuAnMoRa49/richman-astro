@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { NAV_LINKS } from "../consts";
 import { EXTRA_LINKS } from "../consts";
 import { COMPANY_INFO } from "../consts";
@@ -8,8 +9,13 @@ const today = new Date();
 <footer class="bg-white text-primary">
   <div class="flex flex-col general-padding py-8 gap-8">
     <div class="flex flex-col md:flex-row md:justify-between gap-8">
-      <section class="flex gap-4 md:flex-2">
-        <img src="/logo.svg" alt="Richman Componentes Logo" class="size-24" />
+      <section class="flex gap-4 md:flex-2 items-center">
+        <Image
+          src="/logo.svg"
+          alt="Richman Componentes Logo"
+          width={64}
+          height={64}
+        />
         <div>
           <p class="uppercase text-3xl font-bold">
             Richman <span class="block">Componentes</span>

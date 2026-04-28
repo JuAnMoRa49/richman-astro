@@ -1,28 +1,55 @@
 ---
-const { speed = 30, pauseOnHover = true, title } = Astro.props;
+import { Image } from "astro:assets";
+const { speed = 30, pauseOnHover = true, title, items = [] } = Astro.props;
 ---
 
-<div class="overflow-hidden w-full group bg-gray-100" data-pause={pauseOnHover}>
-  <div class="general-padding">
-    <h2
-      class="text-2xl md:text-3xl text-center my-8 font-semibold text-primary"
-    >
-      {title}
-    </h2>
-  </div>
-  <div class="flex w-max animate-marquee" style={`--duration:${speed}s`}>
-    <!-- contenido original -->
-    <div class="flex gap-12 py-4">
-      <slot />
-    </div>
-    <div class="hiiden md:flex gap-12 py-4 ml-12">
-      <slot />
-    </div>
-    <div class="hidden lg:flex gap-12 py-4 ml-12">
-      <slot />
-    </div>
-    <div class="hidden xl:flex gap-12 py-4 ml-12">
-      <slot />
+<div
+  class="overflow-hidden w-full group bg-gray-100"
+  data-pause={pauseOnHover}
+  data-marquee
+>
+  {
+    title && (
+      <div class="general-padding">
+        <h2 class="text-2xl md:text-3xl text-center my-8 font-semibold text-primary">
+          {title}
+        </h2>
+      </div>
+    )
+  }
+
+  <div
+    class="flex w-max animate-marquee"
+    style={`--duration:${speed}s`}
+    data-track
+  >
+    <div class="flex gap-12 py-4 items-center" data-original>
+      {
+        items.map((item) => (
+          <div class="flex flex-col items-center gap-4 shrink-0 bg-white p-4 rounded-lg">
+            {item.image && (
+              <Image
+                src={item.image}
+                alt={item.title ?? ""}
+                class=" object-contain"
+                width={120}
+                height={120}
+                loading="eager"
+              />
+            )}
+            {item.title && (
+              <span class="text-lg font-semibold text-primary whitespace-nowrap">
+                {item.title}
+              </span>
+            )}
+            {item.description && (
+              <span class="text-sm text-primary/50 whitespace-nowrap">
+                {item.description}
+              </span>
+            )}
+          </div>
+        ))
+      }
     </div>
   </div>
 </div>
@@ -41,8 +68,32 @@ const { speed = 30, pauseOnHover = true, title } = Astro.props;
     }
   }
 
-  /* pause con tailwind group */
   [data-pause="true"]:hover .animate-marquee {
     animation-play-state: paused;
   }
 </style>
+
+<script>
+  function initMarquee(wrapper) {
+    const track = wrapper.querySelector("[data-track]");
+    const original = wrapper.querySelector("[data-original]");
+
+    function fillTrack() {
+      wrapper.querySelectorAll("[data-clone]").forEach((el) => el.remove());
+
+      const copies = Math.ceil(window.innerWidth / original.offsetWidth) + 1;
+
+      for (let i = 0; i < copies; i++) {
+        const clone = original.cloneNode(true);
+        clone.setAttribute("data-clone", "");
+        clone.classList.add("ml-12");
+        track.appendChild(clone);
+      }
+    }
+
+    fillTrack();
+    new ResizeObserver(fillTrack).observe(wrapper);
+  }
+
+  document.querySelectorAll("[data-marquee]").forEach(initMarquee);
+</script>

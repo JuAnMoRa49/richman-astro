@@ -50,40 +50,33 @@ const valores = [
 ---
 
 <GeneralLayout>
-  <!-- slot name="head" para agregar algo extra al head solo en esta página -->
-  <link slot="head" rel="stylesheet" />
-
   <HeroSection
     title="Comprometidos con la calidad de nuestros productos"
     description="Producimos componentes especializados para diferentes sectores"
-    video="/home-hero.mp4"
+    video="/heros/home-hero.mp4"
     ctaText="Explora nuestros productos"
     ctaLink="/productos"
   />
   <TextWithIcons
     title="Todos los componentes que necesitas en un solo lugar"
     subtitle="Garantizamos la excelencia operativa y el cumplimiento riguroso de cada requerimiento industrial."
-    leftIcon="/src/assets/icons/tuerca.svg"
-    rightIcon="/src/assets/icons/engranaje.svg"
+    leftIcon="/icons/tuerca.svg"
+    rightIcon="/icons/engranaje.svg"
     theme="light"
   />
 
   <Slider
-    speed={30}
-    pauseOnHover={true}
-    title="Empresas que confían en nuestra calidad
-"
-  >
-    {
-      CLIENTS.map((client) => (
-        <img
-          src={client.logo}
-          alt={client.name}
-          class="size-40 bg-white border px-4 rounded"
-        />
-      ))
-    }
-  </Slider>
+    title="Nuestros clientes"
+    speed={20}
+    items={[
+      { image: "/clients/agco.svg" },
+      { image: "/clients/cnh.svg" },
+      { image: "/clients/inteva.svg" },
+      { image: "/clients/jh.svg" },
+      { image: "/clients/metso.svg" },
+      { image: "/clients/vw.svg" },
+    ]}
+  />
 
   <StackedCards
     title="Valores que impulsan la excelencia"
@@ -106,8 +99,8 @@ const valores = [
   />
   <TextWithIcons
     title="Sé parte de la comunidad de excelencia industrial"
-    leftIcon="/src/assets/icons/tuerca.svg"
-    rightIcon="/src/assets/icons/engranaje.svg"
+    leftIcon="/icons/tuerca.svg"
+    rightIcon="/icons/engranaje.svg"
     theme="dark"
   />
 </GeneralLayout>

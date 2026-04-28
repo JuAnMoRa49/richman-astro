@@ -1,5 +1,5 @@
 ---
-const { title, description, image, href } = Astro.props;
+const { title, description, image, href, loading } = Astro.props;
 import { Image } from "astro:assets";
 ---
 
@@ -15,6 +15,7 @@ import { Image } from "astro:assets";
         src={image}
         alt={title}
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading={loading ?? "lazy"}
       />
     </div>
 

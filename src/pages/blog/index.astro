@@ -2,6 +2,7 @@
 import GeneralLayout from "../../layouts/GeneralLayout.astro";
 import HeroSection from "../../components/HeroSection.astro";
 import BlogDisplay from "../../components/blog/BlogDisplay.astro";
+import TextWithIcons from "../../components/TextWithIcons.astro";
 ---
 
 <GeneralLayout>
@@ -18,10 +19,12 @@ import BlogDisplay from "../../components/blog/BlogDisplay.astro";
     description="Participamos en diferentes eventos y ferias comerciales alrededor del mundo para conectar con clientes y socios potenciales."
     theme="light"
     limit={4}
+    loading="eager"
   />
-  <section class="bg-primary text-white py-8">
-    <div class="general-padding">
-      <h2 class="text-center text-5xl">Sé parte de nuestra historia</h2>
-    </div>
-  </section>
+  <TextWithIcons
+    title="Sé parte de la comunidad de excelencia industrial"
+    leftIcon="/icons/tuerca.svg"
+    rightIcon="/icons/engranaje.svg"
+    theme="dark"
+  />
 </GeneralLayout>

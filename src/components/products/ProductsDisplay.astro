@@ -6,6 +6,7 @@ const {
   restrict,
   limit = 4,
   superlimit = false,
+  loading,
 } = Astro.props;
 import { getCollection } from "astro:content";
 import ProductCard from "./ProductCard.astro";
@@ -49,6 +50,7 @@ const instanceId = `products-${Math.random().toString(36).slice(2, 8)}`;
               category={product.data.category}
               image={product.data.image}
               theme={theme}
+              loading={loading}
             />
           </li>
         ))

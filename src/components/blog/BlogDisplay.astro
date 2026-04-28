@@ -5,6 +5,7 @@ const {
   restrict,
   limit = 4,
   superlimit = false,
+  loading,
 } = Astro.props;
 import { getCollection } from "astro:content";
 import BlogCard from "./BlogCard.astro";
@@ -37,6 +38,7 @@ const posts = restrict
               title={post.data.title}
               description={post.data.description}
               image={post.data.image}
+              loading={loading}
             />
           </li>
         ))

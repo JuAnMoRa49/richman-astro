@@ -1,7 +1,14 @@
 ---
 import { Image } from "astro:assets";
 
-const { title, subtitle, leftIcon, rightIcon, theme = "light" } = Astro.props;
+const {
+  title,
+  subtitle,
+  leftIcon,
+  rightIcon,
+  theme = "light",
+  loading,
+} = Astro.props;
 const isDark = theme === "dark";
 const iconClass = `absolute opacity-10 w-72 h-72 pointer-events-none ${
   isDark ? "brightness-0 invert" : "brightness-0"
@@ -34,7 +41,7 @@ const iconClass = `absolute opacity-10 w-72 h-72 pointer-events-none ${
         height={24}
         alt=""
         class={`icon-spin -left-24 -bottom-24 lg:-bottom-24 ${iconClass}`}
-        loading="eager"
+        loading={loading ?? "lazy"}
       />
     )
   }
@@ -47,7 +54,7 @@ const iconClass = `absolute opacity-10 w-72 h-72 pointer-events-none ${
         height={24}
         alt=""
         class={`icon-spin-reverse -right-24 -top-24 lg:-top-24 ${iconClass}`}
-        loading="eager"
+        loading={loading ?? "lazy"}
       />
     )
   }

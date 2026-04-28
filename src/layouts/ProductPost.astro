@@ -26,7 +26,7 @@ import TextWithIcons from "../components/TextWithIcons.astro";
 >
   <div class="general-padding pt-24 pb-12 flex flex-col md:flex-row">
     <div class="bg-white">
-      <Image src={image} alt={title} class="w-full" />
+      <Image src={image} alt={title} class="w-full" loading="eager" />
       {
         extra && (
           <div class="hidden md:block lg:hidden mt-6">
@@ -102,6 +102,7 @@ import TextWithIcons from "../components/TextWithIcons.astro";
     superlimit={true}
     theme="light"
     limit={3}
+    loading="eager"
   />
   <TextWithIcons
     title="Todos los componentes que necesitas en un solo lugar"
